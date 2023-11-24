@@ -18,4 +18,8 @@ public class StringBar extends Bar{
         HappyHour = false;
         notifyObservers();
     }
+
+    public void order(StringDrink drink, StringRecipe recipe) {
+        recipe.mix(drink);
+    }
 }

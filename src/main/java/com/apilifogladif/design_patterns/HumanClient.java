@@ -2,18 +2,24 @@ package com.apilifogladif.design_patterns;
 
 public class HumanClient implements Client {
 
+    private final OrderingStrategy strategy;
+
+    public HumanClient(OrderingStrategy strategy_) {
+        strategy = strategy_;
+    }
+
     @Override
     public void happyHourStarted(Bar bar) {
-        bar.startHappyHour();
+        strategy.happyHourStarted((StringBar)bar);
     }
 
     @Override
     public void happyHourEnded(Bar bar) {
-        bar.endHappyHour();
+        strategy.happyHourEnded((StringBar)bar);
     }
 
     @Override
-    public void wants(StringDrink drink, StringRecipe recipe_, StringBar bar) {
-
+    public void wants(StringDrink drink, StringRecipe recipe, StringBar bar) {
+        strategy.wants(drink, recipe, bar);
     }
 }
